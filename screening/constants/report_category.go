@@ -41,4 +41,7 @@ const (
 
 	// ReportCategorySexuallyExplicit means the reported content contained sexually explicit material
 	ReportCategorySexuallyExplicit
+
+	// ReportCategoryOther means the reported content didn't fit into the categories
+	ReportCategoryOther
 )
