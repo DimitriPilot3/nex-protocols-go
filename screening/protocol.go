@@ -24,8 +24,8 @@ const (
 // Protocol handles the Screening protocol
 type Protocol struct {
 	endpoint               nex.EndpointInterface
-	ReportDataStoreContent func(err error, packet nex.PacketInterface, callID uint32, pContentParam screening_types.ScreeningDataStoreContentParam, pViolationParam screening_types.ScreeningUGCViolationParam) (*nex.RMCMessage, *nex.Error) // TODO - Unknown request/response format
-	ReportUser             func(err error, packet nex.PacketInterface, callID uint32, packetPayload []byte) (*nex.RMCMessage, *nex.Error)                                                                                                     // TODO - Unknown request/response format
+	ReportDataStoreContent func(err error, packet nex.PacketInterface, callID uint32, pContentParam screening_types.ScreeningDataStoreContentParam, pViolationParam screening_types.ScreeningUGCViolationParam) (*nex.RMCMessage, *nex.Error)
+	ReportUser             func(err error, packet nex.PacketInterface, callID uint32, packetPayload []byte) (*nex.RMCMessage, *nex.Error) // TODO - Unknown request/response format
 	Patches                nex.ServiceProtocol
 	PatchedMethods         []uint32
 }
