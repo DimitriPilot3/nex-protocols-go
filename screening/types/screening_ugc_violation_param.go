@@ -68,7 +68,7 @@ func (suvp *ScreeningUGCViolationParam) ExtractFrom(readable types.Readable) err
 
 // Copy returns a new copied instance of ScreeningUGCViolationParam
 func (suvp ScreeningUGCViolationParam) Copy() types.RVType {
-	copied := NewScreeniGCUgcViolationParam()
+	copied := NewScreeningUGCViolationParam()
 
 	copied.StructureVersion = suvp.StructureVersion
 	copied.Category = suvp.Category
@@ -142,8 +142,8 @@ func (suvp ScreeningUGCViolationParam) FormatToString(indentationLevel int) stri
 	return b.String()
 }
 
-// NewScreeniGCUgcViolationParam returns a new ScreeningUGCViolationParam
-func NewScreeniGCUgcViolationParam() ScreeningUGCViolationParam {
+// NewScreeningUGCViolationParam returns a new ScreeningUGCViolationParam
+func NewScreeningUGCViolationParam() ScreeningUGCViolationParam {
 	return ScreeningUGCViolationParam{
 		Category:         constants.ReportCategoryInvalid, // TODO - Find the real default
 		Reason:           types.NewString("0"),
