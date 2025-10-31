@@ -146,7 +146,7 @@ func (suvp ScreeningUGCViolationParam) FormatToString(indentationLevel int) stri
 func NewScreeningUGCViolationParam() ScreeningUGCViolationParam {
 	return ScreeningUGCViolationParam{
 		Category:         constants.ReportCategoryInvalid, // TODO - Find the real default
-		Reason:           types.NewString("0"),
+		Reason:           types.NewString(""),
 		Context:          types.NewList[ScreeningContextInfo](),
 		ScreenshotDataID: types.NewUInt64(0),
 	}
