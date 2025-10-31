@@ -40,27 +40,27 @@ func (suvp *ScreeningUGCViolationParam) ExtractFrom(readable types.Readable) err
 
 	err = suvp.ExtractHeaderFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningUGCViolationParam header. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningUGCViolationParam header. %s", err.Error())
 	}
 
 	err = suvp.Category.ExtractFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningUGCViolationParam.Category. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningUGCViolationParam.Category. %s", err.Error())
 	}
 
 	err = suvp.Reason.ExtractFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningUGCViolationParam.Reason. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningUGCViolationParam.Reason. %s", err.Error())
 	}
 
 	err = suvp.Context.ExtractFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningUGCViolationParam.Context. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningUGCViolationParam.Context. %s", err.Error())
 	}
 
 	err = suvp.ScreenshotDataID.ExtractFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningUGCViolationParam.ScreenshotDataID. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningUGCViolationParam.ScreenshotDataID. %s", err.Error())
 	}
 
 	return nil

@@ -35,17 +35,17 @@ func (sci *ScreeningContextInfo) ExtractFrom(readable types.Readable) error {
 
 	err = sci.ExtractHeaderFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningContextInfo header. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningContextInfo header. %s", err.Error())
 	}
 
 	err = sci.Key.ExtractFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningContextInfo.Key. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningContextInfo.Key. %s", err.Error())
 	}
 
 	err = sci.Value.ExtractFrom(readable)
 	if err != nil {
-		return fmt.Errorf("failed to extract ScreeningContextInfo.Value. %s", err.Error())
+		return fmt.Errorf("Failed to extract ScreeningContextInfo.Value. %s", err.Error())
 	}
 
 	return nil
