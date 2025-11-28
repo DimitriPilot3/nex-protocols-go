@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/types"
 )
 
@@ -32,6 +33,9 @@ type UpdateMatchmakeSessionParam struct {
 
 // WriteTo writes the UpdateMatchmakeSessionParam to the given writable
 func (umsp UpdateMatchmakeSessionParam) WriteTo(writable types.Writable) {
+	stream := writable.(*nex.ByteStreamOut)
+	libraryVersion := stream.LibraryVersions.MatchMaking
+
 	contentWritable := writable.CopyNew()
 
 	umsp.GID.WriteTo(contentWritable)
@@ -50,7 +54,9 @@ func (umsp UpdateMatchmakeSessionParam) WriteTo(writable types.Writable) {
 	umsp.MatchmakeSystemType.WriteTo(contentWritable)
 	umsp.ParticipationPolicy.WriteTo(contentWritable)
 	umsp.PolicyArgument.WriteTo(contentWritable)
-	umsp.Codeword.WriteTo(contentWritable)
+	if libraryVersion.GreaterOrEqual("4.0.0") {
+		umsp.Codeword.WriteTo(contentWritable)
+	}
 
 	content := contentWritable.Bytes()
 
@@ -61,6 +67,9 @@ func (umsp UpdateMatchmakeSessionParam) WriteTo(writable types.Writable) {
 
 // ExtractFrom extracts the UpdateMatchmakeSessionParam from the given readable
 func (umsp *UpdateMatchmakeSessionParam) ExtractFrom(readable types.Readable) error {
+	stream := readable.(*nex.ByteStreamIn)
+	libraryVersion := stream.LibraryVersions.MatchMaking
+
 	var err error
 
 	err = umsp.ExtractHeaderFrom(readable)
@@ -148,9 +157,11 @@ func (umsp *UpdateMatchmakeSessionParam) ExtractFrom(readable types.Readable) er
 		return fmt.Errorf("Failed to extract UpdateMatchmakeSessionParam.PolicyArgument. %s", err.Error())
 	}
 
-	err = umsp.Codeword.ExtractFrom(readable)
-	if err != nil {
-		return fmt.Errorf("Failed to extract UpdateMatchmakeSessionParam.Codeword. %s", err.Error())
+	if libraryVersion.GreaterOrEqual("4.0.0") {
+		err = umsp.Codeword.ExtractFrom(readable)
+		if err != nil {
+			return fmt.Errorf("Failed to extract UpdateMatchmakeSessionParam.Codeword. %s", err.Error())
+		}
 	}
 
 	return nil
